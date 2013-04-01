@@ -25,7 +25,7 @@ Usage:
 
 .. code-block::
 
-    > from datetime_util import truncate
+    > from datetime_truncate import truncate
     > truncate(datetime(2012, 2, 4, 12, 24, 50, 234), 'second')
     datetime(2012, 2, 4, 12, 24, 50)
     > truncate(datetime(2012, 2, 4, 12, 24, 50), 'minute')
