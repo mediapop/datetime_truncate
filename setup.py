@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 from setuptools import setup, find_packages
-import re
 
 setup(
     name='datetime_truncate',
