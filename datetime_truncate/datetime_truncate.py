@@ -2,9 +2,9 @@ from datetime import timedelta
 
 __all__ = [
     'truncate',
-    'first_day_of_week',
-    'first_day_of_quarter',
-    'first_day_of_half_year',
+    'truncate_week',
+    'truncate_quarter',
+    'truncate_half_year',
 ]
 
 PERIODS = {
@@ -18,57 +18,53 @@ PERIODS = {
 ODD_PERIODS = ['week', 'quarter', 'half_year']
 
 
-def first_day_of_week(dt):
+def truncate_week(datetime):
     '''
     Truncates a date to the first day of an ISO 8601 week, i.e. monday.
 
-    :params dt: an initialized datetime object
-    :return: `dt` with the original day set to monday
+    :params datetime: an initialized datetime object
+    :return: `datetime` with the original day set to monday
     :rtype: :py:mod:`datetime` datetime object
     '''
-    day = dt.isoweekday()
-    if day == 1:
-        return dt
-    elif day > 1:
-        return dt - timedelta(days=day - 1)
+    return datetime - timedelta(days=datetime.isoweekday() - 1)
 
 
-def first_day_of_quarter(dt):
+def truncate_quarter(datetime):
     '''
     Truncates the datetime to the first day of the quarter for this date.
 
-    :params dt: an initialized datetime object
-    :return: `dt` with the month set to the first month of this quarter
+    :params datetime: an initialized datetime object
+    :return: `datetime` with the month set to the first month of this quarter
     :rtype: :py:mod:`datetime` datetime object
     '''
-    month = dt.month
+    month = datetime.month
     if month >= 1 and month <= 3:
-        return dt.replace(month=1)
+        return datetime.replace(month=1)
     elif month >= 4 and month <= 6:
-        return dt.replace(month=4)
+        return datetime.replace(month=4)
     elif month >= 7 and month <= 9:
-        return dt.replace(month=7)
+        return datetime.replace(month=7)
     elif month >= 10 and month <= 12:
-        return dt.replace(month=10)
+        return datetime.replace(month=10)
 
 
-def first_day_of_half_year(dt):
+def truncate_half_year(datetime):
     '''
     Truncates the datetime to the first day of the half year for this date.
 
-    :params dt: an initialized datetime object
-    :return: `dt` with the month set to the first month of this half year
+    :params datetime: an initialized datetime object
+    :return: `datetime` with the month set to the first month of this half year
     :rtype: :py:mod:`datetime` datetime object
     '''
-    month = dt.month
+    month = datetime.month
 
     if month >= 1 and month <= 6:
-        return dt.replace(month=1)
+        return datetime.replace(month=1)
     elif month >= 7 and month <= 12:
-        return dt.replace(month=7)
+        return datetime.replace(month=7)
 
 
-def truncate(dt, truncate_to='day'):
+def truncate(datetime, truncate_to='day'):
     '''
     Truncates a datetime to have the values with higher precision than
     the one set as `truncate_to` as zero (or one for day and month).
@@ -94,20 +90,20 @@ def truncate(dt, truncate_to='day'):
        > truncate(datetime(2012, 3, 1), 'week')
        datetime(2012, 2, 27)
 
-    :params dt: an initialized datetime object
+    :params datetime: an initialized datetime object
     :params truncate_to: The highest precision to keep its original data.
     :return: datetime with `truncated_to` as the highest level of precision
     :rtype: :py:mod:`datetime` datetime object
     '''
     if truncate_to in PERIODS:
-        return dt.replace(**PERIODS[truncate_to])
+        return datetime.replace(**PERIODS[truncate_to])
     elif truncate_to in ODD_PERIODS:
         if truncate_to == 'week':
-            return truncate(first_day_of_week(dt), 'day')
+            return truncate(truncate_week(datetime), 'day')
         elif truncate_to == 'quarter':
-            return truncate(first_day_of_quarter(dt), 'month')
+            return truncate(truncate_quarter(datetime), 'month')
         elif truncate_to == 'half_year':
-            return truncate(first_day_of_half_year(dt), 'month')
+            return truncate(truncate_half_year(datetime), 'month')
     else:
         raise ValueError('truncate_to not valid. Valid periods: {}'.format(
             ', '.join(PERIODS.keys() + ODD_PERIODS)
