@@ -7,6 +7,15 @@ and month).
 
 It is based on PostgreSQL's DATE_TRUNC_.
 
+Installation:
+-------------
+
+You can install from pypi!
+
+.. code-block::
+
+    pip install datetime_truncate
+
 Usage:
 ------
 
