@@ -25,25 +25,37 @@ Usage:
 
 .. code-block::
 
-    > from datetime_truncate import truncate
-    > truncate(datetime(2012, 2, 4, 12, 24, 50, 234), 'second')
+    >>> from datetime_truncate import truncate
+    >>> truncate(datetime(2012, 2, 4, 12, 24, 50, 234), 'second')
     datetime(2012, 2, 4, 12, 24, 50)
-    > truncate(datetime(2012, 2, 4, 12, 24, 50), 'minute')
+    >>> truncate(datetime(2012, 2, 4, 12, 24, 50), 'minute')
     datetime(2012, 2, 4, 12, 24)
-    > truncate(datetime(2012, 2, 4, 12, 24), 'hour')
+    >>> truncate(datetime(2012, 2, 4, 12, 24), 'hour')
     datetime(2012, 2, 4, 12)
-    > truncate(datetime(2012, 2, 4, 12, 24), 'day')
+    >>> truncate(datetime(2012, 2, 4, 12, 24), 'day')
     datetime(2012, 2, 4)
-    > truncate(datetime(2012, 2, 4, 12, 24), 'week')
+    >>> truncate(datetime(2012, 2, 4, 12, 24), 'week')
     datetime(2012, 1, 30)
-    > truncate(datetime(2012, 2, 4, 12, 24), 'month')
+    >>> truncate(datetime(2012, 2, 4, 12, 24), 'month')
     datetime(2012, 2, 1)
-    > truncate(datetime(2012, 2, 4, 12, 24), 'quarter')
+    >>> truncate(datetime(2012, 2, 4, 12, 24), 'quarter')
     datetime(2012, 1, 1)
-    > truncate(datetime(2012, 8, 18, 12, 25), 'half_year')
+    >>> truncate(datetime(2012, 8, 18, 12, 25), 'half_year')
     datetime(2012, 7, 1)
-    > truncate(datetime(2012, 8, 18, 12, 25), 'year')
+    >>> truncate(datetime(2012, 8, 18, 12, 25), 'year')
     datetime(2012, 1, 1)
+
+There are also sugar functions available on the form:
+
+* `truncate_second`
+* `truncate_minute`
+* `truncate_hour`
+* `truncate_day`
+* `truncate_week`
+* `truncate_month`
+* `truncate_quarter`
+* `truncate_half_year`
+* `truncate_year`
 
 
 .. _DATE_TRUNC: http://www.postgresql.org/docs/9.1/static/functions-datetime.html#FUNCTIONS-DATETIME-TRUNC

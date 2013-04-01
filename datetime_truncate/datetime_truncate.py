@@ -2,9 +2,15 @@ from datetime import timedelta
 
 __all__ = [
     'truncate',
+    'truncate_second',
+    'truncate_minute',
+    'truncate_hour',
+    'truncate_day',
     'truncate_week',
+    'truncate_month',
     'truncate_quarter',
     'truncate_half_year',
+    'truncate_year',
 ]
 
 PERIODS = {
@@ -18,6 +24,26 @@ PERIODS = {
 ODD_PERIODS = ['week', 'quarter', 'half_year']
 
 
+def truncate_second(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'second')` '''
+    return truncate(datetime, 'second')
+
+
+def truncate_minute(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'minute')` '''
+    return truncate(datetime, 'minute')
+
+
+def truncate_hour(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'hour')` '''
+    return truncate(datetime, 'hour')
+
+
+def truncate_day(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'day')` '''
+    return truncate(datetime, 'day')
+
+
 def truncate_week(datetime):
     '''
     Truncates a date to the first day of an ISO 8601 week, i.e. monday.
@@ -27,6 +53,11 @@ def truncate_week(datetime):
     :rtype: :py:mod:`datetime` datetime object
     '''
     return datetime - timedelta(days=datetime.isoweekday() - 1)
+
+
+def truncate_month(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'month')` '''
+    return truncate(datetime, 'month')
 
 
 def truncate_quarter(datetime):
@@ -64,6 +95,11 @@ def truncate_half_year(datetime):
         return datetime.replace(month=7)
 
 
+def truncate_year(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'year')` '''
+    return truncate(datetime, 'year')
+
+
 def truncate(datetime, truncate_to='day'):
     '''
     Truncates a datetime to have the values with higher precision than
@@ -83,11 +119,11 @@ def truncate(datetime, truncate_to='day'):
 
     Examples::
 
-       > truncate(datetime(2012, 12, 12, 12), 'day')
+       >>> truncate(datetime(2012, 12, 12, 12), 'day')
        datetime(2012, 12, 12)
-       > truncate(datetime(2012, 12, 14, 12, 15), 'quarter')
+       >>> truncate(datetime(2012, 12, 14, 12, 15), 'quarter')
        datetime(2012, 10, 1)
-       > truncate(datetime(2012, 3, 1), 'week')
+       >>> truncate(datetime(2012, 3, 1), 'week')
        datetime(2012, 2, 27)
 
     :params datetime: an initialized datetime object
