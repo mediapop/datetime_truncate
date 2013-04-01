@@ -10,6 +10,8 @@ It is based on PostgreSQL's DATE_TRUNC_.
 Usage:
 ------
 
+.. code-block::
+
     > from datetime_util import truncate
     > truncate(datetime(2012, 2, 4, 12, 24, 50, 234), 'second')
     datetime(2012, 2, 4, 12, 24, 50)
