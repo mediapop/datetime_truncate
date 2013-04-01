@@ -11,6 +11,9 @@ setup(
     license='BSD',
     long_description=open('README.rst').read(),
     packages=find_packages(exclude=('tests',)),
+    package_data={
+        '': ['README']
+        },
     test_suite='nose.collector',
     tests_require=['nose>=1.2.1'],
     classifiers=[
