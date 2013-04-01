@@ -9,6 +9,7 @@ setup(
     author_email='bjorn@mediapop.co',
     description='Truncate datetime objects to a set level of precision',
     license='BSD',
+    long_description=open('README.md').read(),
     packages=find_packages(exclude=('tests',)),
     test_suite='nose.collector',
     tests_require=['nose>=1.2.1'],
