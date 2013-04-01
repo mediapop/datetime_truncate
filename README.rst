@@ -8,6 +8,8 @@ and month).
 
 It is based on PostgreSQL's DATE_TRUNC_.
 
+Documentation available on `Read the Docs`_.
+
 Installation:
 -------------
 
@@ -16,6 +18,7 @@ You can install from pypi!
 .. code-block::
 
     pip install datetime_truncate
+
 
 Usage:
 ------
@@ -44,3 +47,4 @@ Usage:
 
 
 .. _DATE_TRUNC: http://www.postgresql.org/docs/9.1/static/functions-datetime.html#FUNCTIONS-DATETIME-TRUNC
+.. _Read the Docs: http://datetime_truncate.readthedocs.org/en/latest/
