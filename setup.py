@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='datetime_truncate',
-    version='1.0.1',
+    version='1.0.2',
     url='https://github.com/mediapop/datetime_truncate',
     author='Björn Andersson / Media Pop',
     author_email='bjorn@mediapop.co',
@@ -12,7 +12,7 @@ setup(
     long_description=open('README.rst').read(),
     packages=find_packages(exclude=('tests',)),
     package_data={
-        '': ['README']
+        '': ['README.rst']
         },
     include_package_data=True,
     test_suite='nose.collector',
