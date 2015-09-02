@@ -1,1 +1,1 @@
-from .datetime_truncate import *
+from .datetime_truncate import *  # NOQA
