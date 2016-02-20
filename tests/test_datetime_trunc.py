@@ -1,8 +1,8 @@
 from datetime import datetime
 import unittest
 
-from datetime_truncate import (truncate, truncate_week, truncate_quarter,
-                               truncate_half_year)
+from datetime_trunc import (truncate, truncate_week, truncate_quarter,
+                            truncate_half_year)
 
 DEFAULT_DT = datetime(2012, 7, 12, 12, 14, 14, 342)
 

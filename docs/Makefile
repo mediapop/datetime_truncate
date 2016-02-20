@@ -85,17 +85,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/datetime_truncate.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/datetime_trunc.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/datetime_truncate.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/datetime_trunc.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/datetime_truncate"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/datetime_truncate"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/datetime_trunc"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/datetime_trunc"
 	@echo "# devhelp"
 
 epub:

@@ -2,15 +2,15 @@
 from distutils.core import setup
 
 setup(
-    name='datetime_truncate',
-    version='1.0.2',
-    url='https://github.com/mediapop/datetime_truncate',
+    name='datetime_trunc',
+    version='1.0.0',
+    url='https://github.com/pb-/datetime_trunc',
     author='Björn Andersson / Media Pop',
     author_email='bjorn@mediapop.co',
     description='Truncate datetime objects to a set level of precision',
     license='BSD',
     long_description=open('README.rst').read(),
-    packages=['datetime_truncate'],
+    packages=['datetime_trunc'],
     package_data={
         '': ['README.rst']
     },

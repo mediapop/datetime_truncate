@@ -1,6 +1,9 @@
-==================
-datetime_truncate
-==================
+==============
+datetime_trunc
+==============
+
+This is a fork of `datetime_truncate` that fixes some critical bugs in
+the syntactic sugar versions of the truncate functions.
 
 This module truncates a datetime object to the level of precision that
 you specify, making everything higher than that zero (or one for day
@@ -10,14 +13,13 @@ It is based on PostgreSQL's DATE_TRUNC_.
 
 Documentation available on `Read the Docs`_.
 
+
 Installation:
 -------------
 
-You can install from pypi!
-
 .. code-block::
 
-    pip install datetime_truncate
+    pip install git+git://github.com/pb-/datetime_trunc.git
 
 
 Usage:
@@ -25,7 +27,7 @@ Usage:
 
 .. code-block::
 
-    >>> from datetime_truncate import truncate
+    >>> from datetime_trunc import truncate
     >>> truncate(datetime(2012, 2, 4, 12, 24, 50, 234), 'second')
     datetime(2012, 2, 4, 12, 24, 50)
     >>> truncate(datetime(2012, 2, 4, 12, 24, 50), 'minute')
