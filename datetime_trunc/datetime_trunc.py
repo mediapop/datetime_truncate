@@ -45,6 +45,11 @@ def truncate_day(datetime):
 
 
 def truncate_week(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'week')` '''
+    return truncate(datetime, 'week')
+
+
+def _truncate_week(datetime):
     '''
     Truncates a date to the first day of an ISO 8601 week, i.e. monday.
 
@@ -61,6 +66,11 @@ def truncate_month(datetime):
 
 
 def truncate_quarter(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'quarter')` '''
+    return truncate(datetime, 'quarter')
+
+
+def _truncate_quarter(datetime):
     '''
     Truncates the datetime to the first day of the quarter for this date.
 
@@ -80,6 +90,11 @@ def truncate_quarter(datetime):
 
 
 def truncate_half_year(datetime):
+    ''' Sugar for :py:func:`truncate(datetime, 'half_year')` '''
+    return truncate(datetime, 'half_year')
+
+
+def _truncate_half_year(datetime):
     '''
     Truncates the datetime to the first day of the half year for this date.
 
@@ -135,11 +150,11 @@ def truncate(datetime, truncate_to='day'):
         return datetime.replace(**PERIODS[truncate_to])
     elif truncate_to in ODD_PERIODS:
         if truncate_to == 'week':
-            return truncate(truncate_week(datetime), 'day')
+            return truncate(_truncate_week(datetime), 'day')
         elif truncate_to == 'quarter':
-            return truncate(truncate_quarter(datetime), 'month')
+            return truncate(_truncate_quarter(datetime), 'month')
         elif truncate_to == 'half_year':
-            return truncate(truncate_half_year(datetime), 'month')
+            return truncate(_truncate_half_year(datetime), 'month')
     else:
         raise ValueError('truncate_to not valid. Valid periods: {}'.format(
             ', '.join(PERIODS.keys() + ODD_PERIODS)

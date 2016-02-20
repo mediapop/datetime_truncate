@@ -1,7 +1,8 @@
 from datetime import datetime
 import unittest
 
-from datetime_truncate import truncate
+from datetime_trunc import (truncate, truncate_week, truncate_quarter,
+                            truncate_half_year)
 
 DEFAULT_DT = datetime(2012, 7, 12, 12, 14, 14, 342)
 
@@ -52,6 +53,18 @@ class TestDatetimeTruncate(unittest.TestCase):
                          self.default_dt.replace(day=16, hour=0,
                                                  minute=0, second=0,
                                                  microsecond=0))
+        self.assertEqual(truncate_week(self.default_dt),
+                         self.default_dt.replace(day=9, hour=0,
+                                                 minute=0, second=0,
+                                                 microsecond=0))
+        self.assertEqual(truncate_week(self.default_dt.replace(day=9)),
+                         self.default_dt.replace(day=9, hour=0,
+                                                 minute=0, second=0,
+                                                 microsecond=0))
+        self.assertEqual(truncate_week(self.default_dt.replace(day=16)),
+                         self.default_dt.replace(day=16, hour=0,
+                                                 minute=0, second=0,
+                                                 microsecond=0))
 
     def test_truncate_to_quarter(self):
         self.assertEqual(truncate(self.default_dt.replace(month=2), 'quarter'),
@@ -72,6 +85,24 @@ class TestDatetimeTruncate(unittest.TestCase):
                                     minute=0, second=0,
                                     microsecond=0)
         )
+        self.assertEqual(truncate_quarter(self.default_dt.replace(month=2)),
+                         self.default_dt.replace(month=1, day=1, hour=0,
+                                                 minute=0, second=0,
+                                                 microsecond=0))
+        self.assertEqual(truncate_quarter(self.default_dt.replace(month=6)),
+                         self.default_dt.replace(month=4, day=1, hour=0,
+                                                 minute=0, second=0,
+                                                 microsecond=0))
+        self.assertEqual(truncate_quarter(self.default_dt),
+                         self.default_dt.replace(month=7, day=1, hour=0,
+                                                 minute=0, second=0,
+                                                 microsecond=0))
+        self.assertEqual(
+            truncate_quarter(self.default_dt.replace(month=10)),
+            self.default_dt.replace(month=10, day=1, hour=0,
+                                    minute=0, second=0,
+                                    microsecond=0)
+        )
 
     def test_truncat_to_half_year(self):
         self.assertEqual(
@@ -81,6 +112,16 @@ class TestDatetimeTruncate(unittest.TestCase):
                                     microsecond=0)
         )
         self.assertEqual(truncate(self.default_dt, 'half_year'),
+                         self.default_dt.replace(month=7, day=1, hour=0,
+                                                 minute=0, second=0,
+                                                 microsecond=0))
+        self.assertEqual(
+            truncate_half_year(self.default_dt.replace(month=6)),
+            self.default_dt.replace(month=1, day=1, hour=0,
+                                    minute=0, second=0,
+                                    microsecond=0)
+        )
+        self.assertEqual(truncate_half_year(self.default_dt),
                          self.default_dt.replace(month=7, day=1, hour=0,
                                                  minute=0, second=0,
                                                  microsecond=0))
