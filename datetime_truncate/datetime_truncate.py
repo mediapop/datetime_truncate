@@ -69,13 +69,13 @@ def truncate_quarter(datetime):
     :rtype: :py:mod:`datetime` datetime object
     '''
     month = datetime.month
-    if month >= 1 and month <= 3:
+    if 1 <= month <= 3:
         return datetime.replace(month=1)
-    elif month >= 4 and month <= 6:
+    elif 4 <= month <= 6:
         return datetime.replace(month=4)
-    elif month >= 7 and month <= 9:
+    elif 7 <= month <= 9:
         return datetime.replace(month=7)
-    elif month >= 10 and month <= 12:
+    elif 10 <= month <= 12:
         return datetime.replace(month=10)
 
 
@@ -89,9 +89,9 @@ def truncate_half_year(datetime):
     '''
     month = datetime.month
 
-    if month >= 1 and month <= 6:
+    if 1 <= month <= 6:
         return datetime.replace(month=1)
-    elif month >= 7 and month <= 12:
+    elif 7 <= month <= 12:
         return datetime.replace(month=7)
 
 
