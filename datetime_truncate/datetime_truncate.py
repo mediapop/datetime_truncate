@@ -52,6 +52,7 @@ def truncate_week(datetime):
     :return: `datetime` with the original day set to monday
     :rtype: :py:mod:`datetime` datetime object
     '''
+    datetime = truncate(datetime, 'day')
     return datetime - timedelta(days=datetime.isoweekday() - 1)
 
 
@@ -68,6 +69,8 @@ def truncate_quarter(datetime):
     :return: `datetime` with the month set to the first month of this quarter
     :rtype: :py:mod:`datetime` datetime object
     '''
+    datetime = truncate(datetime, 'month')
+
     month = datetime.month
     if 1 <= month <= 3:
         return datetime.replace(month=1)
@@ -87,6 +90,8 @@ def truncate_half_year(datetime):
     :return: `datetime` with the month set to the first month of this half year
     :rtype: :py:mod:`datetime` datetime object
     '''
+    datetime = truncate(datetime, 'month')
+
     month = datetime.month
 
     if 1 <= month <= 6:
@@ -135,11 +140,11 @@ def truncate(datetime, truncate_to='day'):
         return datetime.replace(**PERIODS[truncate_to])
     elif truncate_to in ODD_PERIODS:
         if truncate_to == 'week':
-            return truncate(truncate_week(datetime), 'day')
+            return truncate_week(datetime)
         elif truncate_to == 'quarter':
-            return truncate(truncate_quarter(datetime), 'month')
+            return truncate_quarter(datetime)
         elif truncate_to == 'half_year':
-            return truncate(truncate_half_year(datetime), 'month')
+            return truncate_half_year(datetime)
     else:
         raise ValueError('truncate_to not valid. Valid periods: {}'.format(
             ', '.join(PERIODS.keys() + ODD_PERIODS)
