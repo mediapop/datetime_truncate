@@ -52,6 +52,7 @@ def truncate_week(datetime):
     :return: `datetime` with the original day set to monday
     :rtype: :py:mod:`datetime` datetime object
     '''
+    datetime = truncate(datetime, 'day')
     return datetime - timedelta(days=datetime.isoweekday() - 1)
 
 
@@ -92,7 +93,6 @@ def truncate_half_year(datetime):
     datetime = truncate(datetime, 'month')
 
     month = datetime.month
-
     if month >= 1 and month <= 6:
         return datetime.replace(month=1)
     elif month >= 7 and month <= 12:
