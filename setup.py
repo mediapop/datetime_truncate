@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='datetime_truncate',
-    version='1.1.0',
+    version='1.1.1',
     url='https://github.com/mediapop/datetime_truncate',
     author='Björn Andersson / Media Pop',
     author_email='bjorn@mediapop.co',
