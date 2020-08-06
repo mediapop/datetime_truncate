@@ -19,3 +19,5 @@ lib
 lib64
 
 MANIFEST
+
+.tox
